@@ -1,0 +1,10 @@
+defaults: &defaults
+  path:
+    sample1.csv.gz: command/sample1.sql
+    sample2.csv.gz: command/sample2.sql
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults

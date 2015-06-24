@@ -1,0 +1,29 @@
+defaults: &defaults
+  wait:
+    second: 10 #処理をポーリングする間隔(秒)
+  sqs: #SQSに関する定義
+    url: 'https://sqs.ap-northeast-1.amazonaws.com/xxxx/yyyy' #SQSのURL
+    region: ap-northeast-1 #リージョン
+    profile: your_profile #~/.aws/credentialsのプロファイル名
+  dynamodb: #DynamoDBに関する定義
+    region: ap-northeast-1 #リージョン
+    profile: your_profile #~/.aws/credentialsのプロファイル名
+    message_ids_table: message_ids #DynamoDBのテーブル名
+  pgsql: #Redshiftに関する定義
+    host: 'xxxx.yyyy.ap-northeast-1.redshift.amazonaws.com' #RedshiftのHost名
+    user: your_user_name #Redshiftのユーザ名
+    password: your_passoword #Redshiftのパスワード
+    dbname: your_db_name #RedshiftのDB名
+    port: your_port #Redshiftのポート
+  s3: #データファイルを配置するS3に関する定義
+    bucket: your_bucket_name #S3のバケット名
+    folder: your_folder_name #S3のフォルダ名
+  credential: #Copyコマンドで指定するcredential
+    access_key: your_aws_access_key #AWSのaccess_key
+    secret_access_key: your_aws_secret_access_key #AWSのsecret_access_key
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults
